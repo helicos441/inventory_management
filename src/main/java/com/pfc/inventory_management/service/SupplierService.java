@@ -14,11 +14,11 @@ public class SupplierService {
         this.supplierRepository = supplierRepository;
     }
 
-    public Iterable<Supplier> getAllCategories() {
+    public Iterable<Supplier> getAllSuppliers() {
         return supplierRepository.findAll();
     }
 
-    public Optional<Supplier> getCategoryById(Long id) {
+    public Optional<Supplier> getSupplierById(Long id) {
         return supplierRepository.findById(id);
     }
 

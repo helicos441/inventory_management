@@ -11,11 +11,11 @@ import java.net.URI;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/categories")
-public class CategoryControler {
+@RequestMapping("/api/categories")
+public class CategoryController {
     private final CategoryService categoryService;
 
-    public CategoryControler(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
