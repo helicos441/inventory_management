@@ -1,6 +1,6 @@
 package com.pfc.inventory_management.controller;
 
-import com.pfc.inventory_management.dto.ProductDto;
+import com.pfc.inventory_management.dto.*;
 import com.pfc.inventory_management.entity.Product;
 import com.pfc.inventory_management.service.ProductService;
 import jakarta.validation.Valid;
@@ -25,9 +25,29 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getCategoryById(@PathVariable Long id) {
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Optional<Product> p = productService.getProductById(id);
         return p.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/searchName")
+    public ResponseEntity<Iterable<Product>> searchProductsByName(@RequestBody @Valid SearchProductNameDto searchProductNameDto) {
+        return ResponseEntity.status(200).body(productService.searchProductsByName(searchProductNameDto.productName()));
+    }
+
+    @GetMapping("/searchPrice")
+    public ResponseEntity<Iterable<Product>> searchProductsByPrice(@RequestBody @Valid SearchProductPricesDto dto) {
+        return ResponseEntity.status(200).body(productService.searchProductsByPrice(dto.minPrice(), dto.maxPrice()));
+    }
+
+    @GetMapping("/searchCategory")
+    public ResponseEntity<Iterable<Product>> getProductsByCategoryName(@RequestBody @Valid SearchCategoryDto dto) {
+        return ResponseEntity.status(200).body(productService.searchByCategory(dto.categoryName()));
+    }
+
+    @GetMapping("/searchSupplier")
+    public ResponseEntity<Iterable<Product>> getProductsBySupplierName(@RequestBody @Valid SearchSupplierDto dto) {
+        return ResponseEntity.status(200).body(productService.searchBySupplier(dto.supplierName()));
     }
 
     @PostMapping
