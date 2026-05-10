@@ -1,26 +1,27 @@
-package com.pfc.inventory_management.repositories;
+package com.pfc.inventory_management.service;
 
-import com.pfc.inventory_management.repository.ProductRepository;
+import com.pfc.inventory_management.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DataJpaTest
+@SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
-public class ProductRepositoryTest {
+public class ProductServiceTest {
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     @Test
     public void testFindAll()
     {
-        var products = productRepository.findAll();
+        var products = productService.getAllProducts();
 
         assertEquals(2, products.size());
     }
+
 }
