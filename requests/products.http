@@ -11,7 +11,7 @@ GET http://localhost:8080/api/products/searchName
 Content-Type: application/json
 
 {
-  "productName": "Test 1"
+  "productName": "vdlfv"
 }
 
 ### Get products by price
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 {
   "minPrice": 5,
-  "maxPrice": 30
+  "maxPrice": 10
 }
 
 ### Get products by Category
@@ -36,7 +36,7 @@ GET http://localhost:8080/api/products/searchSupplier
 Content-Type: application/json
 
 {
- "supplierName": "Editions Palemon 29"
+ "supplierName": "Bricomarché"
 }
 
 ### Create product
@@ -44,27 +44,27 @@ POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
-  "name": "Test 1",
-  "description": "Test produit",
-  "price": 25.00,
+  "name": "Bidon",
+  "description": "Bidon",
+  "price": 15,
   "quantity": 1,
-  "categoryId": 1,
-  "supplierId": 1
+  "categoryId": 3,
+  "supplierId": 3
 }
 
 ### Update a product
-PUT http://localhost:8080/api/products/1
+PUT http://localhost:8080/api/products/2
 Content-Type: application/json
 
 {
-  "name": "Test 1",
-  "description": "Test produit",
-  "price": 25.00,
+  "name": "Tondeuse",
+  "description": "Tondeuse",
+  "price": 100.00,
   "quantity": 1,
-  "categoryId": 1,
-  "supplierId": 1
+  "categoryId": 3,
+  "supplierId": 3
 }
 
 ### Delete a product
-DELETE http://localhost:8080/api/products/2
+DELETE http://localhost:8080/api/products/3
 Accept: application/json
